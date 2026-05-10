@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'Moco';
+    src: url('fonts/Moco.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JHCNotion';
+    src: url('fonts/JHCNotion-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--scrollbar-track);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $color-3;
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: $color-2 rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background: linear-gradient(to bottom right, $color-2, $color-3);
+    background-attachment: fixed;
+    font-family: $font-text;
+    min-height: 100vh;
+}
+
+h1 {
+    font-family: $font-title;
+    font-weight: normal;
+}
+
+h2 {
+    font-family: $font-text;
+    font-weight: bolder;
+    color: $color-1;
+    text-shadow: var(--text-glow);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,13 @@
+🏗️ Projet VillaNova : Résumé du Contexte GlobalLe projet consiste à créer une application web moderne pour la collectivité territoriale de VillaNova afin de centraliser sa programmation culturelle et d'augmenter la participation des 18-40 ans. L'application doit refléter une image moderne, inclusive et éco-responsable.  
+
+🗓️ Programme de Développement (5 Jours)
+
+Jour 1 : Conception & MaquetteObjectif : Passer de l'idée au design visuel.  Tâches :Définir une charte graphique complète : palette de couleurs, typographies accessibles (normes WCAG), style des composants et iconographie.  Réaliser les maquettes de la page d'accueil et de la fiche détaillée d'un événement.  Créer un prototype interactif (sur Figma par exemple) pour valider l'expérience utilisateur ($UX/UI$).  
+
+Jour 2 : Structure HTML Sémantique & Éco-conceptionObjectif : Construire des fondations solides et respectueuses de l'environnement.  Tâches :Découper la maquette en blocs sémantiques utilisant les balises appropriées (<header>, <nav>, <main>, <section>, <article>, <footer>).  Appliquer des principes d'éco-conception : utilisation du lazy loading, formats d'images modernes (WebP, AVIF) et balises <picture> adaptatives.  Optimiser les médias pour réduire l'empreinte carbone et viser un poids de page inférieur à 1 Mo.  
+
+Jour 3 : Stylisation avec SASSObjectif : Donner vie au design en utilisant un préprocesseur pour un code maintenable.  Tâches :Mettre en place une architecture SASS avec des variables (couleurs, espacements) et des mixins pour les éléments répétitifs.  Adopter une approche Mobile First pour garantir un affichage optimal sur tous les écrans.  Utiliser Flexbox et CSS Grid pour la mise en page et vérifier la conformité W3C du CSS généré.  
+
+Jours 4 & 5 : JavaScript, API & InteractionsObjectif : Transformer le site statique en une application dynamique et accessible.  Tâches :Connexion API : Récupérer les données réelles des événements via l'API OpenAgenda en utilisant fetch et async/await.  Manipulation du DOM : Injecter dynamiquement les événements dans la page et gérer la navigation vers les fiches détails via des paramètres d'URL (id).  Accessibilité (WCAG AA) : Assurer la navigation complète au clavier, gérer le focus visuel, et utiliser les attributs ARIA pour informer les lecteurs d'écran des changements de contenu.  
+
+✅ Critères de RéussiteL'application est entièrement fonctionnelle et connectée à une source de données réelle.  Le code est propre, commenté et optimisé pour la performance et l'écologie.  L'interface est universellement accessible, respectant les standards d'inclusion les plus stricts.  

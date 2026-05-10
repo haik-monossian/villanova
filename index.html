@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massalive</title>
+    <link rel="stylesheet" href="global.css">
+</head>
+
+<body>
+    <header>
+        <h1>Massalive</h1>
+    </header>
+
+    <main>
+        <section id="date-navigator-container">
+            <div class="nav-wrapper">
+                <div class="date-navigator">
+                    <button id="prev-day" class="nav-arrow" aria-label="Jour précédent">&lt;</button>
+                    <div id="current-date-display" class="clickable-date">
+                        <h2 id="display-date">Aujourd'hui</h2>
+                    </div>
+                    <button id="next-day" class="nav-arrow" aria-label="Jour suivant">&gt;</button>
+                </div>
+                <button id="reset-date" class="nav-reset" title="Prochainement">↺</button>
+            </div>
+            <div id="calendar-popup" class="calendar-popup">
+                <div class="calendar-header">
+                    <button id="cal-prev-month">&lt;</button>
+                    <span id="cal-month-year"></span>
+                    <button id="cal-next-month">&gt;</button>
+                </div>
+                <div class="calendar-grid-header">
+                    <span>Lu</span><span>Ma</span><span>Me</span><span>Je</span><span>Ve</span><span>Sa</span><span>Di</span>
+                </div>
+                <div id="calendar-days" class="calendar-grid"></div>
+            </div>
+        </section>
+
+        <div id="filter-container">
+            <button id="filter-prev" class="filter-nav" aria-label="Filtres précédents">&lt;</button>
+            <section id="filter-section">
+                <button class="filter">Concerts</button>
+                <button class="filter">Expositions</button>
+                <button class="filter">Spectacles</button>
+                <button class="filter">Cinéma</button>
+                <button class="filter">Ateliers</button>
+                <button class="filter">Conférences</button>
+                <button class="filter">Soirées</button>
+            </section>
+            <button id="filter-next" class="filter-nav" aria-label="Filtres suivants">&gt;</button>
+        </div>
+
+        <section id="events-section" role="list"></section>
+        <div id="scroll-sentinel" style="height: 20px; width: 100%;"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Massalive - Tous droits réservés</p>
+    </footer>
+
+    <div id="event-modal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-handle"></div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="scripts/theme.js"></script>
+    <script src="scripts/filters.js"></script>
+    <script src="scripts/modal.js"></script>
+    <script src="scripts/datepicker.js"></script>
+    <script src="scripts/events.js"></script>
+</body>
+
+</html>

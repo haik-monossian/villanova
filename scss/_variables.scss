@@ -1,0 +1,42 @@
+$font-title: 'Moco', sans-serif;
+$font-text: 'JHCNotion', sans-serif;
+
+:root {
+    --color-1: #F1FAFB;
+    --color-2: #A0E4F1;
+    --color-3: #9DC6FF;
+    --color-4: #4993FA;
+    --color-4-rgb: 73, 147, 250;
+
+    --glow-shadow: 0 4px 15px rgba(var(--color-4-rgb), 0.3);
+    --text-glow: 1px 2px 4px rgba(var(--color-4-rgb), 0.5);
+    --calendar-bg: linear-gradient(to bottom right, var(--color-2), var(--color-3));
+    --calendar-text: var(--color-1);
+    --header-shadow: 2px 4px 0 var(--color-3);
+    --scrollbar-thumb: linear-gradient(var(--color-4), var(--color-1));
+    --scrollbar-track: rgba(0, 0, 0, 0.05);
+}
+
+:root.dark-mode,
+body.dark-mode {
+    --color-1: #F1FAFB;
+    --color-2: #0B1120;
+    --color-3: #1E293B;
+    --color-4: #38BDF8;
+    --color-4-rgb: 56, 189, 248;
+
+    --glow-shadow: none;
+    --text-glow: none;
+    --header-shadow: none;
+
+    --calendar-bg: linear-gradient(to bottom right, var(--color-2), var(--color-3));
+    --calendar-text: var(--color-1);
+    --scrollbar-thumb: #0f172a;
+    --scrollbar-track: #020617;
+}
+
+$color-1: var(--color-1);
+$color-2: var(--color-2);
+$color-3: var(--color-3);
+$color-4: var(--color-4);
+$color-4-rgb: var(--color-4-rgb);
