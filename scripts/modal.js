@@ -3,6 +3,7 @@ const Modal = {
     body: null,
     closeBtn: null,
     backdrop: null,
+    previousActiveElement: null,
 
     init() {
         this.el = document.getElementById('event-modal');
@@ -11,6 +12,12 @@ const Modal = {
         this.backdrop = this.el.querySelector('.modal-backdrop');
 
         this.handle.addEventListener('click', () => this.close());
+        this.handle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.close();
+            }
+        });
         this.backdrop.addEventListener('click', () => this.close());
 
         document.addEventListener('keydown', (e) => {
@@ -21,6 +28,7 @@ const Modal = {
     },
 
     open(event) {
+        this.previousActiveElement = document.activeElement;
         const locationName = event.location?.name || event.location?.city || 'Marseille';
         const address = event.location?.address || '';
         const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationName + ' ' + address)}`;
@@ -55,6 +63,11 @@ const Modal = {
 
             this.el.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Focus on handle for keyboard usability
+            if (this.handle) {
+                this.handle.focus();
+            }
 
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
@@ -109,6 +122,9 @@ const Modal = {
         contentAnim.onfinish = () => {
             this.el.classList.remove('active');
             document.body.style.overflow = '';
+            if (this.previousActiveElement) {
+                this.previousActiveElement.focus();
+            }
         };
     }
 };

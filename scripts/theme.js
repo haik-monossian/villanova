@@ -8,9 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const title = document.querySelector('header h1');
     if (title) {
-        title.addEventListener('click', () => {
+        const toggleTheme = () => {
             const isDark = document.documentElement.classList.toggle('dark-mode');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        };
+        title.addEventListener('click', toggleTheme);
+        title.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleTheme();
+            }
         });
     }
 });

@@ -33,7 +33,8 @@ async function fetchEvents() {
 function createEventCard(event) {
     const article = document.createElement('article');
     article.className = 'event';
-    article.setAttribute('role', 'listitem');
+    article.setAttribute('role', 'button');
+    article.setAttribute('tabindex', '0');
 
     const timing = event.selectedTiming || event.firstTiming || (event.timings && event.timings[0]);
     const startDate = timing
@@ -43,6 +44,8 @@ function createEventCard(event) {
     const location = event.location ? (event.location.name || event.location.city || 'Marseille') : 'Lieu non spécifié';
     const title = event.title?.fr || event.title || 'Sans titre';
     const description = event.longDescription?.fr || event.description?.fr || event.description || 'Pas de description disponible.';
+
+    article.setAttribute('aria-label', `Événement : ${title}. Organisé à ${location} le ${startDate}. Appuyer sur Entrée ou Espace pour voir les détails.`);
 
     const mapUrl = event.location
         ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location.name + ' ' + event.location.address)}`
@@ -72,7 +75,7 @@ function createEventCard(event) {
     article.innerHTML = `
         ${imageHtml}
         <div class="event-data">
-            <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="event-map-link">
+            <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="event-map-link" tabindex="-1">
                 <p>${location}</p>
             </a>
             <p>${startDate}</p>
@@ -87,6 +90,13 @@ function createEventCard(event) {
     article.addEventListener('click', (e) => {
         if (e.target.closest('.event-map-link')) return;
         if (window.EventModal) window.EventModal.open(event);
+    });
+
+    article.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (window.EventModal) window.EventModal.open(event);
+        }
     });
 
     return article;

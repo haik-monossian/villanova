@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <h1>Massalive</h1>
+        <h1 tabindex="0" role="button" aria-label="Changer le thème (Clair/Sombre)">Massalive</h1>
     </header>
 
     <main>
@@ -18,7 +18,7 @@
             <div class="nav-wrapper">
                 <div class="date-navigator">
                     <button id="prev-day" class="nav-arrow" aria-label="Jour précédent">&lt;</button>
-                    <div id="current-date-display" class="clickable-date">
+                    <div id="current-date-display" class="clickable-date" tabindex="0" role="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Choisir une date au calendrier">
                         <h2 id="display-date">Aujourd'hui</h2>
                     </div>
                     <button id="next-day" class="nav-arrow" aria-label="Jour suivant">&gt;</button>
@@ -63,7 +63,7 @@
     <div id="event-modal" class="modal">
         <div class="modal-backdrop"></div>
         <div class="modal-content">
-            <div class="modal-handle"></div>
+            <div class="modal-handle" tabindex="0" role="button" aria-label="Fermer les détails de l'événement"></div>
             <div id="modal-body"></div>
         </div>
     </div>

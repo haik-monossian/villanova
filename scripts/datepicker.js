@@ -25,7 +25,15 @@ const DatePicker = {
 
         if (this.prevBtn) this.prevBtn.addEventListener('click', () => this.changeDaySmart(-1));
         if (this.nextBtn) this.nextBtn.addEventListener('click', () => this.changeDaySmart(1));
-        if (this.dateContainer) this.dateContainer.addEventListener('click', () => this.toggleCalendar());
+        if (this.dateContainer) {
+            this.dateContainer.addEventListener('click', () => this.toggleCalendar());
+            this.dateContainer.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.toggleCalendar();
+                }
+            });
+        }
         if (this.resetBtn) {
             this.resetBtn.addEventListener('click', () => {
                 window.currentFilterState.date = null;
@@ -49,6 +57,19 @@ const DatePicker = {
         document.addEventListener('click', (e) => {
             if (this.popup && !this.popup.contains(e.target) && !this.dateContainer.contains(e.target)) {
                 this.popup.classList.remove('active');
+                if (this.dateContainer) {
+                    this.dateContainer.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.popup && this.popup.classList.contains('active')) {
+                this.popup.classList.remove('active');
+                if (this.dateContainer) {
+                    this.dateContainer.setAttribute('aria-expanded', 'false');
+                    this.dateContainer.focus();
+                }
             }
         });
 
@@ -135,8 +156,11 @@ const DatePicker = {
 
     toggleCalendar() {
         if (!this.popup) return;
-        this.popup.classList.toggle('active');
-        if (this.popup.classList.contains('active')) {
+        const isActive = this.popup.classList.toggle('active');
+        if (this.dateContainer) {
+            this.dateContainer.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        }
+        if (isActive) {
             this.viewDate = new Date(window.currentFilterState.date || new Date());
             this.renderCalendar();
         }
@@ -183,7 +207,10 @@ const DatePicker = {
             if (selectedStr === dateStr) div.classList.add('selected');
 
             if (hasEvents) {
-                div.addEventListener('click', () => {
+                div.setAttribute('tabindex', '0');
+                div.setAttribute('role', 'button');
+                
+                const selectDate = () => {
                     if (selectedStr === dateStr) {
                         window.currentFilterState.date = null;
                     } else {
@@ -192,6 +219,18 @@ const DatePicker = {
                     this.updateDisplay();
                     if (window.applyAllFilters) window.applyAllFilters();
                     this.popup.classList.remove('active');
+                    if (this.dateContainer) {
+                        this.dateContainer.setAttribute('aria-expanded', 'false');
+                        this.dateContainer.focus();
+                    }
+                };
+
+                div.addEventListener('click', selectDate);
+                div.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        selectDate();
+                    }
                 });
             }
 
